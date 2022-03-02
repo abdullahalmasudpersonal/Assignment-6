@@ -1,26 +1,14 @@
 
 
-// spiner
-const toggleSpiner = displaystyle => {
-    document.getElementById('spiner').style.display = displaystyle;
-}
-const toggleSearchResult = displaystyle => {
-    document.getElementById('search-result').style.display = displaystyle;
-}
-
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // spiner on
-    toggleSpiner('block');
-    /*     // toggleSearchResult-hide
-        toggleSearchResult('none'); */
-    console.log(searchText);
+    // console.log(searchText);
     //clear search
     searchField.value = '';
-    const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText} `;
 
-    //console.log(url);
+    //load data
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data.data));
@@ -28,26 +16,76 @@ const searchPhone = () => {
 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
-    data?.forEach(data => {
-        console.log(data);
+    searchResult.innerHTML = '';
+    data.forEach(data => {
+        // console.log(data);
         const div = document.createElement('div');
         div.classList.add('col');
-        div.innerHTML = `
-        <div class="card h-100 rounded">
-            <img src="${data.image}" class="card-img-top" alt="...">
+        div.innerHTML = `            
+        <div class="card h-100">
+            <img src="${data.image}" class="card-img-top" alt=".">
             <div class="card-body">
                 <h5 class="card-title">${data.phone_name}</h5>
-                <p class="card-text"></p>
+                <h6 class="card-title" >${data.brand}</h6>
+                <p class="card-text">${data.slug}</p>
             </div>
+            <button onclick="loadPhoneDetail('${data.slug}')"
+            class="color w-50 mx-auto mb-4 mt-4"> Details
+            </button>
         </div>
         `;
         searchResult.appendChild(div);
-    });
-    // spiner off
-    toggleSpiner('none');
-    /*     // toggleSearchresult-show
-        toggleSearchResult('block'); */
+
+    })
 }
+
+const loadPhoneDetail = slug => {
+    // console.log(slug);
+    const url = ` https://openapi.programming-hero.com/api/phone/${slug}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetail(data.data.mainFeatures));
+}
+
+const displayPhoneDetail = data => {
+    console.log(data);
+    const phoneDetails = document.getElementById('phone-details');
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <img src="${data.image}" class="card-img-top">
+    <div class="card-body">
+        <p class="card-text">${data.releaseDate}</p>
+        <p class="card-text">${data.slug}</p>
+        <p class="card-text">${data.name}</p>
+        <h5 class="card-title">${data.storage}</h5>
+        <p class="card-text">${data.displaySize}</p>
+        <p class="card-text">${data.chipSet}</p>
+        <p class="card-text">${data.memory}</p>
+        <p class="card-text">${data.sensors[1]}</p>
+    </div>
+    `;
+    phoneDetails.appendChild(div);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
