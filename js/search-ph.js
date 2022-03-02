@@ -1,8 +1,20 @@
 
 
+// spiner
+const toggleSpiner = displaystyle => {
+    document.getElementById('spiner').style.display = displaystyle;
+}
+const toggleSearchResult = displaystyle => {
+    document.getElementById('search-result').style.display = displaystyle;
+}
+
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
+    // spiner on
+    toggleSpiner('block');
+    /*     // toggleSearchResult-hide
+        toggleSearchResult('none'); */
     console.log(searchText);
     //clear search
     searchField.value = '';
@@ -16,7 +28,7 @@ const searchPhone = () => {
 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
-    data.forEach(data => {
+    data?.forEach(data => {
         console.log(data);
         const div = document.createElement('div');
         div.classList.add('col');
@@ -30,7 +42,11 @@ const displaySearchResult = data => {
         </div>
         `;
         searchResult.appendChild(div);
-    })
+    });
+    // spiner off
+    toggleSpiner('none');
+    /*     // toggleSearchresult-show
+        toggleSearchResult('block'); */
 }
 
 

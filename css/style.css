@@ -1,3 +1,15 @@
 body{
 background-color: rgb(255, 219, 172);
 }
+#spiner{
+    display: none;
+}
+
+.color{
+    background-image: linear-gradient(rgb(219, 208, 245),rgb(240, 218, 248));
+    color: rgb(78, 25, 25);
+    border: none;
+    height: 2.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+}

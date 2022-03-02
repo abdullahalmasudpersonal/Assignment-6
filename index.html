@@ -18,23 +18,30 @@
     <h1 class="text-center mt-4 fw-bold text-success">Search-phone</h1>
 
     <!-- search-phone-area -->
-    <div class="input-group mb-3 w-50 mx-auto mt-4">
+    <div class="input-group mb-3 w-50 mx-auto">
         <input id="search-field" type="text" class="form-control" placeholder="Search the mobile of your choice"
-            aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <button onclick="searchPhone()" class="btn btn-outline-secondary fw-bold" type="button">
-            Search-Ph
-        </button>
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button"
+            id="button-search">Search-Ph</button>
     </div>
 
-    <!-- search-phone-result -->
+    <!-- loading-spiner..... -->
+    <div class="d-flex justify-content-center mb-3">
+        <div id="spiner" class="spinner-border" role="status">
+        </div>
+    </div>
+
+    <!--  phone-details   -->
+    <div id="phone-details" class="w-50 mx-auto">
+    </div>
+
+
+    <!-- phone search result -->
     <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
     </div>
 
-
-
-
     <!-- Js-file-link -->
-    <script src="js/search-ph.js"></script>
+    <script src="js/search.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
