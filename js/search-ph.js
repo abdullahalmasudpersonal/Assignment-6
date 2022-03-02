@@ -1,5 +1,3 @@
-
-
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -67,40 +65,3 @@ const displayPhoneDetail = data => {
     `;
     phoneDetails.appendChild(div);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
